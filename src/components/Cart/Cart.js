@@ -38,14 +38,14 @@ const Cart = (props) => {
     },
   ];
 
-  const cartItemList = cartElements.map((item) => {
+  const cartItemList = cartElements.map((item) => (
     <CartItem
       title={item.title}
       price={item.price}
       imageUrl={item.imageUrl}
       quantity={item.quantity}
-    />;
-  });
+    />
+  ));
   return (
     <>
       <Modal fullscreen="xxl-down" show={props.openCart} hide={props.onHideCart} size='lg' aria-labelledby='example-custom-modal-style-title'>

@@ -3,6 +3,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import CartButton from "./CartButton";
 import {NavLink} from "react-router-dom";
 
+
 const Header = (props) => {
   return (
     <>
@@ -12,16 +13,15 @@ const Header = (props) => {
             DemoEcommerce
           </Navbar.Brand>
           <Nav className="me-auto ">
-            <NavLink to="/home" className="nav-link" style={{ color: "black" }}>
+            <NavLink to="/home" className="nav-link">
               Home
             </NavLink>
-            <NavLink to="/" className="nav-link" style={{ color: "black" }}>
+            <NavLink to="/" className="nav-link">
               Store
             </NavLink>
             <NavLink
               to="/about"
               className="nav-link"
-              style={{ color: "black" }}
             >
               About
             </NavLink>

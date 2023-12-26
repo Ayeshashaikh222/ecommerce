@@ -4,6 +4,8 @@ import ProductStore from "./components/ProductStore/ProductStore";
 import { useState } from "react";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./Store/CartProvider";
+import {Routes, Route} from "react-router-dom";
+import About from "./Pages/About";
 
 function App() {
 
@@ -19,13 +21,19 @@ function App() {
   };
 
   return (
-    <>
+  
     <CartProvider>
-        {openCart && <Cart openCart={openCart} onHideCart={HideCartHandler}/>}
       <Header onOpenCart={openCartHandler}/>
-      <ProductStore />
+      {openCart && <Cart openCart={openCart} onHideCart={HideCartHandler}/>}
+      {/* <ProductStore /> */}
+      <Routes>
+        <>
+         <Route path="/" element={<ProductStore />} />
+         <Route path="/about" element={<About />}/>
+        </>
+      </Routes>
       </CartProvider>
-    </>
+  
   );
 }
 

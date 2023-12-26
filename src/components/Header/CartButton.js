@@ -6,15 +6,14 @@ import CartContext from "../../Store/CartContext";
 
 const CartButton = (props) => {
  const cartContext = useContext(CartContext);
-
- const quantity = cartContext.totalQuantity;   
+  
  
   return (
      <>
      <Button className={stylesheet["cart-button"]} onClick={props.onOpenCart}>
         <AiOutlineShoppingCart />
      </Button>
-     <Badge pill bg='#ff3f6c' className={stylesheet["total-item"]}>{quantity}</Badge>
+     <Badge pill bg='#ff3f6c' className={stylesheet["total-item"]}>{cartContext.totalQuantity}</Badge>
      </>
   );
 }

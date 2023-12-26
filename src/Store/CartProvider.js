@@ -2,37 +2,51 @@ import React, { useState } from 'react';
 import CartContext from './CartContext';
 
 const CartProvider = (props) => {
-    const [products, setProducts] = useState([]);
+    
+    const [cart, setCart] = useState([]);
 
     //adding products in cart
-    const addProductToCartHandler = (product) => {
-        let cartProducts = [...products];
+    const addProductToCartHandler = (product,index) => {
+        let cartProducts = [...cart];
         let isProductPresent = false;
+        // const updateProduct = [...product];
 
+       // Create a new object with the updated quantity
         cartProducts.forEach((item) => {
             if (product.id === item.id){
                 isProductPresent = true;
-                item.quantity = Number(product.quantity) + Number(product.quantity);
-
+                // Increment the quantity of the existing product
+                item.quantity += Number(product.quantity);
             }
         });
         
         if(isProductPresent) {
-            setProducts(...cartProducts);
+            setCart(...cartProducts);
     
         } else {
-            setProducts((prevProducts)=> {
+            setCart((prevProducts)=> {
                 return [...prevProducts, product];
             });
         }
     };
+
+    // calculation the total amount
+    const totalAmount = cart.reduce((total, item)=>{
+        return total + item.price * item.quantity;
+    }, 0);
+
+    //calculating the total quantity
+    const totalQuantity =  cart.reduce((total, item) => {
+        return total + item.quantity 
+    },0);
     
     const removeProductToCartHandler = () => {
 
     };
     const cartContext = {
-         products: products,
-         totalQuantity: products.length,
+         products: cart,
+         totalQuantity: totalQuantity,
+         totalAmount: totalAmount,
          addProduct: addProductToCartHandler,
          removeProduct: removeProductToCartHandler,
 
@@ -48,3 +62,4 @@ const CartProvider = (props) => {
 };
 
 export default CartProvider;
+

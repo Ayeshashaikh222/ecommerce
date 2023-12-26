@@ -2,10 +2,9 @@ import stylesheet from "./CartItem.module.css";
 import { Card, Button, Row, Col } from "react-bootstrap";
 
 const CartItem = (props) => {
-
-    return (
-        <>
-          <Card style={{ width: "100%" }}>
+  return (
+    <>
+      <Card style={{ width: "100%" }}>
         <Row>
           <Col sm={4}>
             <Card.Img
@@ -29,8 +28,8 @@ const CartItem = (props) => {
           </Col>
         </Row>
       </Card>
-        </>
-    );
+    </>
+  );
 };
 
 export default CartItem;

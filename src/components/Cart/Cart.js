@@ -1,61 +1,50 @@
 import { Button, Modal } from "react-bootstrap";
 import CartItem from "./CartItem";
 import stylesheet from "./Cart.module.css";
+import { useContext } from "react";
+import CartContext from "../../Store/CartContext";
 
 const Cart = (props) => {
-  const cartElements = [
-    {
-      title: "Colors",
+ 
 
-      price: 100,
+  const cartcontext = useContext(CartContext);
+  
+  // const cartItemAddHandler = () => {};
+    // const isCartHaveItems = cartcontext.products.length > 0;
+  
 
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-      quantity: 2,
-    },
-
-    {
-      title: "Black and white Colors",
-
-      price: 50,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-      quantity: 3,
-    },
-
-    {
-      title: "Yellow and Black Colors",
-
-      price: 70,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-      quantity: 1,
-    },
-  ];
-
-  const cartItemList = cartElements.map((item) => (
+  const cartItemList = cartcontext.products.map((product) => (
     <CartItem
-      title={item.title}
-      price={item.price}
-      imageUrl={item.imageUrl}
-      quantity={item.quantity}
+    key={product.id}
+      title={product.title}
+      price={product.price}
+      imageUrl={product.imageUrl}
+      quantity={product.quantity}
     />
   ));
+
+  //calculating the total products amount
+    let totalAmount = 0;
+    cartcontext.products.forEach((product)=>{
+      totalAmount = totalAmount + Number(product.price * product.quantity);
+    });
+
   return (
     <>
-      <Modal fullscreen="xxl-down" show={props.openCart} hide={props.onHideCart} size='lg' aria-labelledby='example-custom-modal-style-title'>
+      <Modal
+        fullscreen="xxl-down"
+        show={props.openCart}
+        hide={props.onHideCart}
+        size="lg"
+        aria-labelledby="example-custom-modal-style-title"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Cart</Modal.Title>
         </Modal.Header>
         <Modal.Body>{cartItemList}</Modal.Body>
         <Modal.Footer>
-            Total: 0
-            <Button className={stylesheet["place-order-btn"]}>Place Order</Button>
+          Total: {`₹ ${totalAmount.toFixed(2)}`}
+          <Button className={stylesheet["place-order-btn"]}>Place Order</Button>
         </Modal.Footer>
       </Modal>
     </>

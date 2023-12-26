@@ -1,8 +1,9 @@
 import "./App.css";
 import Header from "./components/Header/Header";
-import Home from "./components/Home/Home";
+import ProductStore from "./components/ProductStore/ProductStore";
 import { useState } from "react";
 import Cart from "./components/Cart/Cart";
+import CartProvider from "./Store/CartProvider";
 
 function App() {
 
@@ -19,9 +20,11 @@ function App() {
 
   return (
     <>
+    <CartProvider>
         {openCart && <Cart openCart={openCart} onHideCart={HideCartHandler}/>}
       <Header onOpenCart={openCartHandler}/>
-      <Home />
+      <ProductStore />
+      </CartProvider>
     </>
   );
 }

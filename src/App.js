@@ -8,6 +8,7 @@ import About from "./Pages/About";
 import Home from "./Pages/Home";
 import Store from "./Pages/Store";
 import Contact from "./Pages/Contact";
+import Product from "./Pages/Product";
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
          <Route path="/" element={<Store />} />
          <Route path="/about" element={<About />}/>
          <Route path="/contact" element={<Contact />}/>
+         <Route path="/product/:productId" element={<Product />} />
         </>
       </Routes>
       </CartProvider>

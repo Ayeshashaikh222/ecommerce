@@ -14,7 +14,7 @@ const CartItem = (props) => {
           <Col sm={4}>
             <Card.Img
               variant="top"
-              style={{ height: "100%", width: "200px" }}
+              style={{ height: "100%", width: "150px" }}
               src={props.imageUrl}
             />
           </Col>

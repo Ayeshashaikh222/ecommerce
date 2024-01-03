@@ -25,6 +25,12 @@ const Header = (props) => {
             >
               About
             </NavLink>
+            <NavLink
+              to="/contact"
+              className="nav-link"
+            >
+              Contact
+            </NavLink>
           </Nav>
           <div className="d-flex w-auto mb-3">
             <CartButton onOpenCart={props.onOpenCart} />

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Container, Button, Form } from "react-bootstrap";
 import stylesheet from './Contact.module.css';
 
 
-function Contact() {
+function Contact(props) {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");

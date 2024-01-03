@@ -7,7 +7,7 @@ import {NavLink} from "react-router-dom";
 const Header = (props) => {
   return (
     <>
-      <Navbar className="bg-body-tertiary">
+      <Navbar className="bg-body-tertiary" style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}}>
         <Container>
           <Navbar.Brand href="#" className="b">
             DemoEcommerce

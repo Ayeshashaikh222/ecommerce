@@ -12,9 +12,9 @@ const Header = (props) => {
 
   const navigate = useNavigate()
 
-  const loginHandler = () => {
-    navigate('/auth', {replace: true})
-  };
+  // const loginHandler = () => {
+  //   navigate('/auth', {replace: true})
+  // };
 
   const logoutHandler = () => {
     authContext.logout();
@@ -50,7 +50,7 @@ const Header = (props) => {
               Contact Us
             </NavLink>
 
-            {!authContext.isLoggedIn && location.pathname !== "/auth" && (<Button onClick={loginHandler} style={{
+            {/* {!authContext.isLoggedIn && location.pathname !== "/auth" && (<Button onClick={loginHandler} style={{
               fontSize: "1.3rem",
               marginLeft: "0.50rem",
               backgroundColor: "transparent",
@@ -60,10 +60,10 @@ const Header = (props) => {
               Login
             </Button>
             )
-            }
+            } */}
 
           </Nav>
-
+         
           {authContext.isLoggedIn &&
             location.pathname !== "/home" &&
             location.pathname !== "/about" &&

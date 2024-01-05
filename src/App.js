@@ -1,9 +1,10 @@
+import React from 'react';
 import "./App.css";
 import Header from "./components/Header/Header";
-import { useState, useContext } from "react";
+import { Suspense, useState, useContext } from "react";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./Store/CartProvider";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate} from "react-router-dom";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
 import Store from "./Pages/Store";
@@ -11,6 +12,7 @@ import Contact from "./Pages/Contact";
 import Product from "./Pages/Product";
 import AuthContext from "./Store/AuthContext";
 import Authentication from "./components/Auth/Authentication";
+
 
 function App() {
 
@@ -31,10 +33,13 @@ function App() {
 
     <CartProvider>
       <Header onOpenCart={openCartHandler} />
+      <Suspense fallback={<div>Loading...</div>}></Suspense>
       {openCart && <Cart openCart={openCart} onHideCart={HideCartHandler} />}
 
       <Routes>
         <>
+
+          {authcontext.isLoggedIn && <Route path="/auth" element={<Navigate to="/home" />} />}
 
           {authcontext.isLoggedIn && (
             <>
@@ -46,8 +51,22 @@ function App() {
               
             </>
           )}
+          
 
           {!authcontext.isLoggedIn && <Route path="/auth" element={<Authentication />} />}
+          
+          {!authcontext.isLoggedIn &&(
+        <>
+         <Route path="/home" element={<Authentication />} />
+         <Route path="/store" element={<Authentication />} />
+         <Route path="/about" element={<Authentication />} />
+         <Route path="/contact" element={<Authentication />} />
+         <Route path="/auth" element={<Authentication />} />
+
+        </>
+          )}
+
+
         </>
       </Routes>
     </CartProvider>

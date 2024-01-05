@@ -5,6 +5,12 @@ import CartContext from "../../Store/CartContext";
 
 const CartItem = (props) => {
   useContext(CartContext);
+
+  const handleQuantityChange = (event)=>{
+    const newQuantity = +event.target.value
+    updateQuantity(props.id,newQuantity)
+  }
+
   const price = `₹ ${props.price.toFixed(2)}`;
 
   return (
@@ -31,11 +37,13 @@ const CartItem = (props) => {
                     max="10"
                     id={`quantity -${props.id}`}
                     value={props.quantity}
+                    onChange={handleQuantityChange}
                   />
                 </Form>
               </>
 
-              <Button className={stylesheet["remove-item-btn"]}>Remove</Button>
+              <Button className={stylesheet["remove-item-btn"]} 
+              onClick={props.onRemove}>Remove</Button>
             </Card.Body>
           </Col>
         </Row>

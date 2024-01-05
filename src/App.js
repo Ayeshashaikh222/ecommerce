@@ -33,16 +33,17 @@ function App() {
 
     <CartProvider>
       <Header onOpenCart={openCartHandler} />
-      <Suspense fallback={<div>Loading...</div>}></Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
       {openCart && <Cart openCart={openCart} onHideCart={HideCartHandler} />}
 
       <Routes>
         <>
 
-          {authcontext.isLoggedIn && <Route path="/auth" element={<Navigate to="/home" />} />}
+          {/* {authcontext.isLoggedIn && <Route path="/auth" element={<Navigate to="/home" />} />} */}
 
           {authcontext.isLoggedIn && (
             <>
+              <Route path='/' element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="/store" element={<Store />} />
               <Route path="/about" element={<About />} />
@@ -57,6 +58,7 @@ function App() {
           
           {!authcontext.isLoggedIn &&(
         <>
+         <Route path="/" element={< Authentication />} />
          <Route path="/home" element={<Authentication />} />
          <Route path="/store" element={<Authentication />} />
          <Route path="/about" element={<Authentication />} />
@@ -69,6 +71,7 @@ function App() {
 
         </>
       </Routes>
+      </Suspense>
     </CartProvider>
 
   );

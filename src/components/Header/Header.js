@@ -4,11 +4,13 @@ import CartButton from "./CartButton";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../../Store/AuthContext";
 import { FiLogOut } from "react-icons/fi";
+import CartContext from "../../Store/CartContext";
 
 
 const Header = (props) => {
 
   const authContext = useContext(AuthContext);
+  const cartcontext =useContext(CartContext)
 
   const navigate = useNavigate()
 
@@ -23,6 +25,19 @@ const Header = (props) => {
 
   const location = useLocation();
 
+  const totalQuantity = cartcontext.products? 
+  cartcontext.products.reduce(
+    (prevValue, currItem) =>{
+      const quantity = Number(currItem.quantity)
+
+      if(isNaN(quantity)){
+        return prevValue
+      }
+
+      return prevValue + quantity
+    } ,0
+
+    ):0;
 
   return (
     <>
@@ -70,7 +85,8 @@ const Header = (props) => {
             location.pathname !== "/contact" &&
             location.pathname !== "/auth" && (
               <div className="d-flex w-auto mb-3">
-                <CartButton onOpenCart={props.onOpenCart} />
+                <CartButton onOpenCart={props.onOpenCart} 
+                totalQuantity={totalQuantity} />
               </div>
             )}
 

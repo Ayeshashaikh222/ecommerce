@@ -12,6 +12,19 @@ const Cart = (props) => {
   // const cartItemAddHandler = () => {};
     // const isCartHaveItems = cartcontext.products.length > 0;
   
+    const totalAmount = cartcontext.products? cartcontext.products.reduce(
+      (prevValue, currItem) =>{
+        const quantity = Number(currItem.quantity)
+        const price = Number(currItem.price)
+        if(isNaN(quantity)|| isNaN(price)){
+          return prevValue
+        }
+        const itemTotal = quantity * price
+        return prevValue + itemTotal
+      } ,0
+  
+    ):0;
+
 
   const cartItemList = cartcontext.products.map((product) => (
     <CartItem
@@ -20,6 +33,7 @@ const Cart = (props) => {
       price={product.price}
       imageUrl={product.imageUrl}
       quantity={product.quantity}
+      onRemove={() => cartcontext.removeProduct(product.id)}
     />
   ));
 

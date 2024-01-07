@@ -43,7 +43,7 @@ const Header = (props) => {
     <>
       <Navbar className="bg-body-tertiary" style={{ boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px" }}>
         <Container>
-          <Navbar.Brand href="#" className="b">
+          <Navbar.Brand href="/" className="b">
             The Generics
           </Navbar.Brand>
           <Nav className="me-auto ">

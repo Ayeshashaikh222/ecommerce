@@ -4,7 +4,7 @@ import { Card, Button, Row, Col, Form } from "react-bootstrap";
 import CartContext from "../../Store/CartContext";
 
 const CartItem = (props) => {
-  useContext(CartContext);
+  const { updateQuantity } = useContext(CartContext);
 
   const handleQuantityChange = (event)=>{
     const newQuantity = +event.target.value

@@ -1,62 +1,11 @@
 export const productsData = [
+  
     {
       
       key: "10",
       id: "01",
       title: "Album 1",
-      price: 100,
-      imageUrl: "https://pbs.twimg.com/media/Cs47zArVYAAg5dS.jpg",
-      altImages: [
-        "https://pbs.twimg.com/media/Cs47zArVYAAg5dS.jpg",
-        "https://pbs.twimg.com/media/Cs5msqkVYAAUgSG.jpg",
-        "https://pbs.twimg.com/media/EpXetJkWMAE1fz8.jpg",
-      ],
-      reviews: [
-        {
-          id: 1,
-          rating: 5,
-          comment: "Fantastic album of the year.",
-        },
-        {
-          id: 2,
-          rating: 4.5,
-          comment: "This album makes me crazy.",
-        },
-      ],
-    },
-  
-    {
-      
-      key: "11",
-      id: "02",
-      title: "Album 2",
-      price: 50,
-      imageUrl: "https://pbs.twimg.com/media/EvKvICWXUAQxyCw.jpg:large",
-      altImages: [
-        "https://pbs.twimg.com/media/EvKvICWXUAQxyCw.jpg:large",
-        "https://pbs.twimg.com/media/EwyzUo-WYAsWuP-.jpg",
-        "https://pbs.twimg.com/media/Ew2rooFWUAAjiny.jpg:large",
-      ],
-      reviews: [
-        {
-          id: 1,
-          rating: 5,
-          comment: "This is the best song that I ever listen.",
-        },
-        {
-          id: 2,
-          rating: 4,
-          comment: "Finally listening to this wonderful album.",
-        },
-      ],
-    },
-  
-    {
-      
-      key: "12",
-      id: "03",
-      title: "Album 3",
-      price: 70,
+      price: 120,
       imageUrl: "https://pbs.twimg.com/media/Ez_jAQHUUAEE3HR.jpg:large",
       altImages: [
         "https://pbs.twimg.com/media/Ez_jAQHUUAEE3HR.jpg:large",
@@ -79,9 +28,9 @@ export const productsData = [
   
     {
       
-      key: "13",
-      id: "04",
-      title: "Album 4",
+      key: "11",
+      id: "02",
+      title: "Album 2",
       price: 100,
       imageUrl: "https://pbs.twimg.com/media/EIi0CiOWwAI_9l0.jpg",
       altImages: [
@@ -102,4 +51,56 @@ export const productsData = [
         },
       ],
     },
+    {
+      
+      key: "12",
+      id: "03",
+      title: "Album 3",
+      price: 110,
+      imageUrl: "https://pbs.twimg.com/media/EvKvICWXUAQxyCw.jpg:large",
+      altImages: [
+        "https://pbs.twimg.com/media/EvKvICWXUAQxyCw.jpg:large",
+        "https://pbs.twimg.com/media/EwyzUo-WYAsWuP-.jpg",
+        "https://pbs.twimg.com/media/Ew2rooFWUAAjiny.jpg:large",
+      ],
+      reviews: [
+        {
+          id: 1,
+          rating: 5,
+          comment: "This is the best song that I ever listen.",
+        },
+        {
+          id: 2,
+          rating: 4,
+          comment: "Finally listening to this wonderful album.",
+        },
+      ],
+    },
+    {
+      
+      key: "13",
+      id: "04",
+      title: "Album 4",
+      price: 100,
+      imageUrl: "https://pbs.twimg.com/media/Cs47zArVYAAg5dS.jpg",
+      altImages: [
+        "https://pbs.twimg.com/media/Cs47zArVYAAg5dS.jpg",
+        "https://pbs.twimg.com/media/Cs5msqkVYAAUgSG.jpg",
+        "https://pbs.twimg.com/media/EpXetJkWMAE1fz8.jpg",
+      ],
+      
+      reviews: [
+        {
+          id: 1,
+          rating: 5,
+          comment: "Fantastic album of the year.",
+        },
+        {
+          id: 2,
+          rating: 4.5,
+          comment: "This album makes me crazy.",
+        },
+      ],
+    },
+  
   ];

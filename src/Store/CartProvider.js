@@ -16,12 +16,15 @@ const CartProvider = (props) => {
     const email = authcontext?.email?.replace(/[^a-zA-Z0-9]/g, "");
     const [cart, setCart] = useState(defaultCart);
 
+    
     const calculateTotalAmount =(products)=>{
         if(!products|| products.length===0){
           return 0
         }
         return products.reduce((total,product)=>total +product.amount,0)
       }
+
+       // Functions to calculate total amount and number of cart items
       const calculateNumberOfCartItems=(products)=>{
         if(!products|| products.length===0){
           return 0
@@ -107,10 +110,14 @@ const CartProvider = (props) => {
 
     }
 
+    
+  // Calculate the updated total amount for the cart
     const updatedTotalAmount = calculateTotalAmount(updatedItems)
+    // const updatedTotalQuantity = calculateNumberOfCartItems(updatedItems)
     setCart({
       products:updatedItems,
-      totalAmount:updatedTotalAmount
+      totalAmount:updatedTotalAmount,
+      // totalQuantity: updatedTotalQuantity
     })
 
     try{
@@ -134,6 +141,8 @@ const CartProvider = (props) => {
         console.log(error.message)
       }
     };
+  // }
+
     
     const removeProductFromCart = async(id) => {
       const existingCartItemIndex = cart.products.findIndex(
@@ -183,15 +192,18 @@ const CartProvider = (props) => {
           const updatedItem={
             ...existingItem,
             quantity:quantity,
-            amount : (existingItem.amount/existingItem.quantity) * quantity
+            amount: (existingItem.amount/existingItem.quantity) * quantity
+            // amount : existingItem.price * quantity
           }
           const updatedItems =[...cart.products]
           updatedItems[existingCartItemIndex]= updatedItem
           
           const updatedTotalAmount = calculateTotalAmount(updatedItems)
+          // const updatedTotalQuantity = calculateNumberOfCartItems(updatedItems)
             setCart({
               products:updatedItems,
-              totalAmount:updatedTotalAmount
+              totalAmount:updatedTotalAmount,
+              // totalQuantity:updatedTotalQuantity
             })
 
 
@@ -216,11 +228,12 @@ const CartProvider = (props) => {
         }
 
         const initialTotalAmount = calculateTotalAmount(cart.products)
-        const initialNumberOfCartItems= calculateNumberOfCartItems(cart.products)
+        // const initialNumberOfCartItems= calculateNumberOfCartItems(cart.products)
 
      const cartContext = {
         products: cart.products,
         totalAmount: cart.totalAmount || initialTotalAmount,
+        // totalAmount: cart.totalAmount || initialNumberOfCartItems,
         addProduct: addProductToCart,
         removeProduct: removeProductFromCart,
         updateQuantity: updateQuantity,

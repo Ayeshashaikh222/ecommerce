@@ -1,18 +1,24 @@
 import React from 'react';
 import "./App.css";
 import Header from "./components/Header/Header";
-import { Suspense, useState, useContext } from "react";
+import { Suspense, useState, useContext, lazy } from "react";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./Store/CartProvider";
 import { Routes, Route, Navigate} from "react-router-dom";
-import About from "./Pages/About";
-import Home from "./Pages/Home";
-import Store from "./Pages/Store";
-import Contact from "./Pages/Contact";
-import Product from "./Pages/Product";
+// import About from "./Pages/About";
+// import Home from "./Pages/Home";
+// import Store from "./Pages/Store";
+// import Contact from "./Pages/Contact";
+// import Product from "./Pages/Product";
 import AuthContext from "./Store/AuthContext";
 import Authentication from "./components/Auth/Authentication";
 
+
+const Home = lazy(()=> import('./Pages/Home'));
+const About = lazy(()=> import('./Pages/About'));
+const Store = lazy(()=> import('./Pages/Store'));
+const Product = lazy(()=> import('./Pages/Product'));
+const Contact = lazy(()=> import('./Pages/Contact'));
 
 function App() {
 
@@ -39,7 +45,7 @@ function App() {
       <Routes>
         <>
 
-          {/* {authcontext.isLoggedIn && <Route path="/auth" element={<Navigate to="/home" />} />} */}
+          {authcontext.isLoggedIn && <Route path="/auth" element={<Navigate to="/home" />} />}
 
           {authcontext.isLoggedIn && (
             <>

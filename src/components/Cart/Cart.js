@@ -9,9 +9,6 @@ const Cart = (props) => {
 
   const cartcontext = useContext(CartContext);
   
-  // const cartItemAddHandler = () => {};
-    // const isCartHaveItems = cartcontext.products.length > 0;
-  
     const totalAmount = cartcontext.products? cartcontext.products.reduce(
       (prevValue, currItem) =>{
         const quantity = Number(currItem.quantity)
@@ -44,7 +41,7 @@ const Cart = (props) => {
       <Modal
         fullscreen="xxl-down"
         show={props.openCart}
-        hide={props.onHideCart}
+        onHide={props.onHideCart}
         size="lg"
         aria-labelledby="example-custom-modal-style-title"
       >
@@ -53,7 +50,7 @@ const Cart = (props) => {
         </Modal.Header>
         <Modal.Body>{cartItemList}</Modal.Body>
         <Modal.Footer>
-          Total: {`₹ ${cartcontext.totalAmount}`}
+          Total: {`₹ ${totalAmount}`}
           <Button className={stylesheet["place-order-btn"]}>Place Order</Button>
         </Modal.Footer>
       </Modal>
